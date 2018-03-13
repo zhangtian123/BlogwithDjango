@@ -3,9 +3,9 @@
 #环境：Win10+Django 1.8.3+ python 2.7.11
 
 #创建项目与app
-django-admin startproject testBlog
+django-admin startproject mysite
 cd testBlog #在项目下创建app
-django-admin startapp MyBlog
+django-admin startapp blog
 
 #在setting.py添加MyBlog应用
 INSTALLED_APPS = [
@@ -61,12 +61,21 @@ def myblogs(request):
 #创建MyBlog的URL模式
 from django.conf.urls import url
 from django.contrib import admin
-from MyBlog.views import *
+from blog.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^Blog/$', myblogs),
 ]
 
+#启动服务
+python manage.py runserver
 
+#上传博客
+127.0.0.1:8000/admin
+#要想登录admin后台，必须要有帐号，需要创建超级管理员帐号
+python manage.py createsuperuser
+
+#访问博客
+127.0.0.1:8000/Blog
 
