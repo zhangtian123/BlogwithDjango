@@ -45,6 +45,14 @@ class BlogPostAdmin(admin.ModelAdmin):
  
 admin.site.register(BlogPost)
 
+#同步数据库和模型之间的联系
+django < 1.7 时：
+    python manage.py syncdb
+
+django > 1.7 时：
+    python manage.py makemigrations
+     python manage.py migrate
+
 #创建视图函数
 from django.shortcuts import render
 from blog.models import BlogPost
