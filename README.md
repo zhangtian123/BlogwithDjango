@@ -45,10 +45,6 @@ class BlogPostAdmin(admin.ModelAdmin):
  
 admin.site.register(BlogPost)
 
-#创建模板
-#在testBlog文件夹新建templates文件夹，然后添加index.html文件
-#需要注意的就是模板中的模板标签以及模板变量都应该与views.py文件对应的函数中的字典变量相一致，否则django虽然不会报错，但也是不会显示数据的
-
 #创建视图函数
 from django.shortcuts import render
 from blog.models import BlogPost
@@ -57,6 +53,10 @@ from blog.models import BlogPost
 def myblogs(request):
     blog_list = BlogPost.objects.all()
     return render(request, 'index.html', {'blog_list':blog_list})
+
+#创建模板
+#在mysite文件夹新建templates文件夹，然后添加index.html文件
+#需要注意的就是模板中的模板标签以及模板变量都应该与views.py文件对应的函数中的字典变量相一致，否则django虽然不会报错，但也是不会显示数据的
 
 #创建MyBlog的URL模式
 from django.conf.urls import url
